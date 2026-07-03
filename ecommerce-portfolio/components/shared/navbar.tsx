@@ -99,7 +99,7 @@ export default function Navbar() {
                         </div>
                     ) : (
                         <Link href="/auth">
-                            <Button size="sm" style={{ backgroundColor: 'hsl(var(--accent))', color: 'white' }}>
+                            <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90">
                                 Ingresar
                             </Button>
                         </Link>
@@ -148,8 +148,7 @@ export default function Navbar() {
                         </Button>
                     ) : (
                         <Link href="/auth" onClick={() => setMenuOpen(false)}>
-                            <Button size="sm" className="w-full"
-                                style={{ backgroundColor: 'hsl(var(--accent))', color: 'white' }}>
+                            <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
                                 Ingresar
                             </Button>
                         </Link>
