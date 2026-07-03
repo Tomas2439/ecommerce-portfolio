@@ -2,11 +2,10 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { updateSession } from '@/lib/supabase/middleware'
 import { createServerClient } from '@supabase/ssr'
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
     const response = await updateSession(request)
     const { pathname } = request.nextUrl
 
-    // Solo proteger rutas /admin
     if (pathname.startsWith('/admin')) {
         const supabase = createServerClient(
             process.env.NEXT_PUBLIC_SUPABASE_URL!,
