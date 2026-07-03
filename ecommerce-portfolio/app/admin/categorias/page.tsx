@@ -15,11 +15,12 @@ export default async function CategoriasPage() {
             <div className="flex items-center justify-between mb-8">
                 <h1 className="text-2xl font-semibold">Categorías</h1>
                 <Link href="/admin/categorias/nueva">
-                    <Button>+ Nueva categoría</Button>
+                    <Button>+ Nueva</Button>
                 </Link>
             </div>
 
-            <div className="border rounded-lg overflow-hidden">
+            {/* Desktop */}
+            <div className="hidden md:block border rounded-lg overflow-hidden">
                 <table className="w-full text-sm">
                     <thead className="bg-muted/50">
                         <tr>
@@ -42,16 +43,42 @@ export default async function CategoriasPage() {
                                 <td className="px-4 py-3 font-medium">{cat.name}</td>
                                 <td className="px-4 py-3 text-muted-foreground">{cat.slug}</td>
                                 <td className="px-4 py-3 text-muted-foreground">{cat.description ?? '—'}</td>
-                                <td className="px-4 py-3 flex gap-2 justify-end">
-                                    <Link href={`/admin/categorias/${cat.id}/editar`}>
-                                        <Button variant="outline" size="sm">Editar</Button>
-                                    </Link>
-                                    <DeleteCategoryButton id={cat.id} />
+                                <td className="px-4 py-3">
+                                    <div className="flex gap-2 justify-end">
+                                        <Link href={`/admin/categorias/${cat.id}/editar`}>
+                                            <Button variant="outline" size="sm">Editar</Button>
+                                        </Link>
+                                        <DeleteCategoryButton id={cat.id} />
+                                    </div>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
+            </div>
+
+            {/* Mobile */}
+            <div className="md:hidden flex flex-col gap-3">
+                {categories?.length === 0 && (
+                    <p className="text-center text-muted-foreground py-8">No hay categorías todavía</p>
+                )}
+                {categories?.map(cat => (
+                    <div key={cat.id} className="border rounded-lg p-4 flex flex-col gap-3">
+                        <div>
+                            <p className="font-medium">{cat.name}</p>
+                            <p className="text-sm text-muted-foreground">{cat.slug}</p>
+                            {cat.description && (
+                                <p className="text-sm text-muted-foreground mt-1">{cat.description}</p>
+                            )}
+                        </div>
+                        <div className="flex gap-2">
+                            <Link href={`/admin/categorias/${cat.id}/editar`} className="flex-1">
+                                <Button variant="outline" size="sm" className="w-full">Editar</Button>
+                            </Link>
+                            <DeleteCategoryButton id={cat.id} />
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     )

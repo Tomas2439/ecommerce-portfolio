@@ -15,19 +15,19 @@ export function ProductCard({ product }: { product: ProductWithCategory }) {
                             className="w-full h-full object-cover"
                         />
                     ) : (
-                        <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">
+                        <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs">
                             Sin imagen
                         </div>
                     )}
                 </div>
-                <CardContent className="p-4 flex flex-col gap-2">
+                <CardContent className="p-3 flex flex-col gap-1">
                     {product.categories && (
-                        <Badge variant="secondary" className="w-fit text-xs">
+                        <Badge variant="secondary" className="w-fit text-xs px-1.5 py-0">
                             {(product.categories as any).name}
                         </Badge>
                     )}
-                    <p className="font-medium leading-tight">{product.name}</p>
-                    <p className="text-lg font-semibold">
+                    <p className="font-medium text-sm leading-tight line-clamp-2">{product.name}</p>
+                    <p className="text-base font-semibold text-primary">
                         ${(product.price_cents / 100).toFixed(2)}
                     </p>
                     {product.stock_qty === 0 && (

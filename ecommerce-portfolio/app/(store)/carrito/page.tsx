@@ -108,7 +108,7 @@ export default function CarritoPage() {
                     <p className="text-2xl font-bold">${(total / 100).toFixed(2)}</p>
                 </div>
                 <Link href="/checkout">
-                    <Button size="lg">Ir al checkout</Button>
+                    <Button variant="accent" size="lg">Ir al checkout</Button>
                 </Link>
             </div>
         </div>

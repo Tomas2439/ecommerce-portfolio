@@ -211,7 +211,7 @@ export default function CheckoutPage() {
                         </CardContent>
                     </Card>
 
-                    <Button type="submit" size="lg" disabled={loading || items.length === 0}>
+                    <Button type="submit" variant="accent" size="lg" disabled={loading || items.length === 0}>
                         {loading ? 'Procesando pago...' : `Confirmar pago — $${(total / 100).toFixed(2)}`}
                     </Button>
                 </form>

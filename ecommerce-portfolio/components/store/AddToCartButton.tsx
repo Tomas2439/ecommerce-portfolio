@@ -29,6 +29,7 @@ export function AddToCartButton({ product }: { product: Product }) {
     return (
         <Button
             size="lg"
+            variant="accent"
             disabled={outOfStock}
             className="w-full md:w-auto"
             onClick={handleAdd}
